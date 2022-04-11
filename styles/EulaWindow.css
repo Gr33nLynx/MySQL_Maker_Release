@@ -1,0 +1,21 @@
+/**
+ * PROJECT NAME: 
+ * 		MySQL Maker
+ * PROJECT DESCRIPTION:
+ * 		GUI for the creation of MySQL code in an automated way
+ * FILE NAME:
+ * 		EULAWindow_Styles.css
+ * FILE DESCRIPTION:
+ * 		EULA Window's Stylesheet
+ * NOTES:
+ * 		All plagiarism attempts // Code theft will be reported by the 
+ * 		author
+ * COPYRIGHT:
+ * 		©2022 GR33NLYNX
+ */
+ 
+#vEulaInfo {
+	-fx-border-color: black;
+    -fx-border-insets: 10;
+    -fx-border-width: 3;
+}

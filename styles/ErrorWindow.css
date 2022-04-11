@@ -1,0 +1,20 @@
+/**
+ * PROJECT NAME: 
+ * 		MySQL Maker
+ * PROJECT DESCRIPTION:
+ * 		GUI for the creation of MySQL code in an automated way
+ * FILE NAME:
+ * 		ErrorWindow_Styles.css
+ * FILE DESCRIPTION:
+ * 		Error Window's Stylesheet
+ * NOTES:
+ * 		All plagiarism attempts // Code theft will be reported by the 
+ * 		author
+ * COPYRIGHT:
+ * 		©2022 GR33NLYNX
+ */
+ 
+#lblErrorTitle, #lblErrorDescription {
+	-fx-font-size: 15px;
+	-fx-font-weight: bold;
+}

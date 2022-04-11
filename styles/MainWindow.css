@@ -1,0 +1,42 @@
+/**
+ * PROJECT NAME: 
+ * 		MySQL Maker
+ * PROJECT DESCRIPTION:
+ * 		GUI for the creation of MySQL code in an automated way
+ * FILE NAME:
+ * 		MainWindow_Styles.css
+ * FILE DESCRIPTION:
+ * 		Main Window's Stylesheet
+ * NOTES:
+ * 		All plagiarism attempts // Code theft will be reported by the 
+ * 		author
+ * COPYRIGHT:
+ * 		©2022 GR33NLYNX
+ */
+ 
+.root {
+	-fx-background-image: url("file:res/MainWindow_Background.jpg");
+	-fx-background-repeat: no-repeat no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 800 400;
+}
+
+#lblCreator, #lblCreatorText, #lblVersion, #lblVersionText  {
+	-fx-text-fill: white;
+	-fx-font-size: 13px;
+	-fx-font-weight: bold;
+}
+
+#lblCreatorText, #lblVersionText {
+	-fx-text-fill: red;
+}
+
+#lblTitle, #lblStatus, #lblStatusText {
+	-fx-text-fill: white;
+	-fx-font-size: 18px;
+	-fx-font-weight: bold;
+}
+
+#lblStatusText {
+	-fx-text-fill: red;
+}
