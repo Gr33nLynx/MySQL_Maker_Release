@@ -84,7 +84,7 @@ public class Helper_Methods {
 		errorStage.getIcons().add(errorIcon);
 		vErrorInfo.setAlignment(Pos.CENTER);
 		errorPanel.setCenter(vErrorInfo);
-		errorScene.getStylesheets().add("file:styles/ErrorWindow_Styles.css");
+		errorScene.getStylesheets().add("file:styles/ErrorWindow.css");
 		
 		errorStage.show();
 		CenterStage(errorStage);

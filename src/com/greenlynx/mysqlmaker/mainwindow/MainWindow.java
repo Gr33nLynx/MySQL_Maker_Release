@@ -88,7 +88,7 @@ public class MainWindow {
 					mainStage.setScene(mainScene);
 					mainStage.setResizable(false);
 					mainStage.getIcons().add(new Image("file:res/MainWindow_Icon.png"));
-					mainScene.getStylesheets().add("file:styles/MainWindow_Styles.css");
+					mainScene.getStylesheets().add("file:styles/MainWindow.css");
 					mainStage.show();
 					Helper_Methods.CenterStage(mainStage);
 					mainStage.setOnCloseRequest(e -> Platform.exit());

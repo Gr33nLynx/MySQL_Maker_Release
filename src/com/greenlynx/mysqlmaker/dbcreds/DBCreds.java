@@ -109,7 +109,7 @@ public class DBCreds {
 		DBPanel.setCenter(vCredentials);
 		DBStage.setResizable(false);
 		DBStage.getIcons().add(new Image("file:res/DBWindow_DBIcon.png"));
-		DBScene.getStylesheets().add("file:styles/DBWindow_Styles.css");
+		DBScene.getStylesheets().add("file:styles/DBWindow.css");
 		
 		// Showing && Centering...
 		DBStage.show();
