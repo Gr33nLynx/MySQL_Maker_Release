@@ -77,8 +77,8 @@ public class Eula extends Application {
 			EulaStage.setScene(EulaScene);
 			
 			EulaStage.setResizable(false);
-			EulaStage.getIcons().add(new Image("file:res/EULA_Icon.jpg"));
-			EulaScene.getStylesheets().add("file:styles/EULAWindow_Styles.css");
+			EulaStage.getIcons().add(new Image("file:res/EulaWindow_Icon.jpg"));
+			EulaScene.getStylesheets().add("file:styles/EULAWindow.css");
 			
 			// Showing && Centering...
 			EulaStage.show();
@@ -237,7 +237,7 @@ public class Eula extends Application {
 		btnDecline.setPrefSize(100, 10);
 		btnDecline.setOnAction(e -> Platform.exit());
 		hButtons.setAlignment(Pos.CENTER);
-		hButtons.setPadding(new Insets(10,0,10,0));
+		hButtons.setPadding(new Insets(0,0,10,0));
 		hButtons.setSpacing(10);
 		hButtons.getChildren().addAll(btnAccept, btnDecline);
 		
