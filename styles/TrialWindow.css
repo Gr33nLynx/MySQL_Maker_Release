@@ -18,3 +18,8 @@
 	-fx-font-size: 17;
 	-fx-font-weight: bold;
 }
+
+#lblTrialDescription, #lblTrialEmail {
+	-fx-font-size: 14;
+	-fx-font-weight: bold;
+}

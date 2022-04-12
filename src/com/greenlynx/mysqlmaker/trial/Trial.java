@@ -27,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 //===================================
 
@@ -54,15 +55,19 @@ public class Trial{
 	public static BorderPane TrialFinishedWindow;
 	public static BorderPane TrialPanel;
 	public static BorderPane TrialWindow;
-	public static Label lblTrialTitle;
-	public static Label lblTrialDescription;
-	public static VBox vTrialInfo;
 	public static BufferedReader reader;
 	public static BufferedWriter writer;
+	public static Label lblTrialDescription;
+	public static Label lblTrialEmail;
+	public static Label lblTrialTitle;
 	public static Scene TrialFinishedScene;
 	public static Scene TrialScene;
 	public static Stage TrialFinishedStage;
 	public static Stage TrialStage;
+	public static VBox vTrialDescription;
+	public static VBox vTrialEmail;
+	public static VBox vTrialInfo;
+	public static VBox vTrialTitle;
 	public static final DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 	public static final File f = new File(System.getenv("USERPROFILE") + getEncodedPath());
 	// ==========================
@@ -71,28 +76,22 @@ public class Trial{
 	 * Load Trial (FIRST STEP)
 	 */
 	public static void TrialStarter() {
-		// Creating...
 		TrialStage = new Stage();
 		TrialPanel = TrialConfig();
-		TrialScene = new Scene(TrialPanel, 500, 400);
+		TrialScene = new Scene(TrialPanel, 350, 300);
 		
-		// Configuring
 		TrialStage.setTitle("MySQL Maker's 30 Days Trial");
 		TrialStage.setScene(TrialScene);
 		
 		TrialStage.setResizable(false);
 		TrialStage.getIcons().add(new Image("file:res/TrialWindow_Icon.png"));
-		TrialScene.getStylesheets().add("file:styles/TrialWindow_Styles.css");
+		TrialScene.getStylesheets().add("file:styles/TrialWindow.css");
 		
-		
-		
-		// Showing && Centering...
 		TrialStage.show();
 		Helper_Methods.CenterStage(TrialStage);
 		
 		CreateTrialConfigFile();
 		
-		// If Trial is closed
 		TrialStage.setOnCloseRequest(e -> {
 			try {
 				MainWindow.MainWindowLoader();
@@ -108,13 +107,10 @@ public class Trial{
 	 * @return TrialPanel
 	 */
 	public static BorderPane TrialConfig() {
-		// Creating...
 		TrialPanel = new BorderPane();
 		
-		// Configuring...
 		TrialPanel.setCenter(TrialCenterSite());
 		
-		// Returning...
 		return TrialPanel;
 	}
 	
@@ -123,18 +119,36 @@ public class Trial{
 	 * @return TrialPanel
 	 */
 	public static VBox TrialCenterSite() {
-		// Creating...
 		vTrialInfo = new VBox();
-		lblTrialTitle = new Label("MySQL Maker's Trial");
-		lblTrialDescription = new Label("");
 		
-		// Configuring...
-		lblTrialTitle.setId("lblTrialTitle");
-		vTrialInfo.setAlignment(Pos.TOP_CENTER);
-		vTrialInfo.setPadding(new Insets(20, 0, 0, 0));
-		vTrialInfo.getChildren().add(lblTrialTitle);
+		vTrialDescription = new VBox();
+		lblTrialDescription = new Label
+		(
+				"Welcome to MySQLMaker!\r\n\n"
+				+ "I, GreenLynx, thank you for using my software.\r\n"
+				+ "Your 30-day trial period begins here.\r\n"
+				+ "I must tell you that this program is fail-safe\n and any sabotage attempts are controlled.\r\n"
+				+ "\r\n"
+				+ "If you require the PRO version, \nplease contact me in the next e-mail address:\n"
+				+ "");
+		lblTrialDescription.setId("lblTrialDescription");
+		lblTrialDescription.setTextAlignment(TextAlignment.CENTER);
 		
-		// Returning...
+		vTrialEmail = new VBox();
+		lblTrialEmail = new Label("\ngreenlynxonfire@gmail.com");
+		lblTrialEmail.setId("lblTrialEmail");
+		lblTrialEmail.setTextAlignment(TextAlignment.CENTER);
+		
+		vTrialDescription.setAlignment(Pos.TOP_CENTER);
+		vTrialDescription.getChildren().add(lblTrialDescription);
+		
+		vTrialEmail.setAlignment(Pos.TOP_CENTER);
+		vTrialEmail.getChildren().add(lblTrialEmail);
+		
+		vTrialInfo.setAlignment(Pos.CENTER);
+		vTrialInfo.setPadding(new Insets(10,0,0,0));
+		vTrialInfo.getChildren().addAll(vTrialDescription, vTrialEmail);
+		
 		return vTrialInfo;
 	}
 	
@@ -170,12 +184,10 @@ public class Trial{
 	 * End Trial (LAST STEP)
 	 */
 	public static void TrialFinisher() {
-		// Creating...
 		TrialFinishedStage = new Stage();
 		TrialFinishedPanel = new BorderPane();
 		TrialFinishedScene = new Scene(TrialFinishedPanel, 500, 400);
-				
-		// Configuring
+	
 		TrialFinishedStage.setTitle("MySQL Maker's 30 Trial has finished!");
 		TrialFinishedStage.setScene(TrialFinishedScene);
 		
@@ -183,11 +195,9 @@ public class Trial{
 		//TrialFinishedStage.getIcons().add(new Image("file:res/EULA_Icon.jpg"));
 		//TrialFinishedScene.getStylesheets().add("file:styles/EULAWindow_Styles.css");
 		
-		// Showing && Centering...
 		TrialFinishedStage.show();
 		Helper_Methods.CenterStage(TrialFinishedStage);
 		
-		// If Trial is closed
 		TrialFinishedStage.setOnCloseRequest(e -> Platform.exit());
 	}
 	
@@ -196,7 +206,6 @@ public class Trial{
 	 * Set Trial Configuration File's Dates
 	 */
 	public static void SetDates() {
-		// Configuring...
 		try {
 			Path fPath = f.toPath();
 			long now = System.currentTimeMillis();
@@ -213,7 +222,6 @@ public class Trial{
 	 * @return true || false
 	 */
 	public static boolean TrialChecker() {
-		// Configuring...
 		try {
 			if (f.exists()) {
 				reader = new BufferedReader(new FileReader(f));
@@ -228,8 +236,6 @@ public class Trial{
 				String now = LocalDateTime.now().format(formatter);
 				if (now.compareTo(end) >= 0) {
 					Trial.TrialFinisher();
-					
-					// Returning...
 					return true;
 				}
 			}
@@ -240,7 +246,6 @@ public class Trial{
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		// Returning...
 		return false;
 	}
 	
@@ -249,13 +254,11 @@ public class Trial{
 	 * @return true || false
 	 */
 	public static boolean SystemTimeModify() {
-		// Configuring...
 		try {
 			reader = new BufferedReader(new FileReader(f));
 			String now = LocalDateTime.now().format(formatter);
 			String start = reader.readLine();
 			
-			// Returning...
 			return now.compareTo(start) < 0;
 		} 
 		catch (FileNotFoundException e) {
@@ -264,7 +267,6 @@ public class Trial{
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		// Returning...
 		return false;
 	}
 	
@@ -274,7 +276,6 @@ public class Trial{
 	 * @throws IOException 
 	 */
 	public static boolean ConfigFileModify() throws IOException {
-		// Returning...
 		return ModifyDateGetter().compareTo(CreationDateGetter()) == 1;
 	}
 	
@@ -284,10 +285,8 @@ public class Trial{
 	 * @throws IOException 
 	 */
 	public static String CreationDateGetter() throws IOException {
-		// Creating...
 		BasicFileAttributes attributes = Files.readAttributes(f.toPath(), BasicFileAttributes.class);
 		
-		// Returning...
 		return new String(attributes.creationTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime().format(formatter));
 	}
 	
@@ -297,10 +296,8 @@ public class Trial{
 	 * @throws IOException 
 	 */
 	public static String ModifyDateGetter() throws IOException {
-		// Creating...
 		BasicFileAttributes attributes = Files.readAttributes(f.toPath(), BasicFileAttributes.class);
 		
-		// Returning...
 		return new String(attributes.lastModifiedTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime().format(formatter));
 	}
 	
@@ -309,7 +306,6 @@ public class Trial{
 	 * @return decodedPath
 	 */
 	public static String getEncodedPath() {
-		// Configuring...
 		String encodedPath = "XFxBcHBEYXRhXFxMb2NhbExvd1xcVGVtcFxcemV3bHloYzJ2c2o4cHptdHludnhmdnpyeWlxaml5LnRtcA==";
 		String decodedPath = "";
 		
@@ -318,7 +314,6 @@ public class Trial{
 		byte[] decodedPathBytes = Base64.getDecoder().decode(encodedPathBytes);
 		decodedPath = new String(decodedPathBytes);
 		
-		// Returning...
 		return decodedPath;
 	}
 	
