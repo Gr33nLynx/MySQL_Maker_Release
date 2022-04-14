@@ -3,6 +3,8 @@ package com.greenlynx.mysqlmaker.trial;
 //============= Imports =============
 import com.greenlynx.mysqlmaker.helpers.Helper_Methods;
 import com.greenlynx.mysqlmaker.mainwindow.MainWindow;
+
+import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,6 +12,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
@@ -20,9 +24,12 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import javafx.application.Platform;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -138,6 +145,21 @@ public class Trial{
 		lblTrialEmail = new Label("\ngreenlynxonfire@gmail.com");
 		lblTrialEmail.setId("lblTrialEmail");
 		lblTrialEmail.setTextAlignment(TextAlignment.CENTER);
+		lblTrialEmail.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event arg0) {
+				try {
+					Desktop.getDesktop().mail(new URI("mailto:greenlynxonfire@gmail.com"));
+				} 
+				catch (IOException e) {
+					e.printStackTrace();
+				} 
+				catch (URISyntaxException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 		vTrialDescription.setAlignment(Pos.TOP_CENTER);
 		vTrialDescription.getChildren().add(lblTrialDescription);
