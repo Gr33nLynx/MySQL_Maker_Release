@@ -124,7 +124,7 @@ public class DBStatus {
 										  "Possible Problems:\n" +
 									      "1 - Your credentials are incorrect\n" +
 										  "2 - You don't have permission to connect to the DB",
-										  new Image("file:res/ErrorWindow_ConnectionError.png"));
+										  new Image("file:res/ErrorWindow_DBError.png"));
 				DBCreds.txtUser.setText("");
 				DBCreds.txtPassword.setText("");
 				DBCreds.txtDB.setText("");
