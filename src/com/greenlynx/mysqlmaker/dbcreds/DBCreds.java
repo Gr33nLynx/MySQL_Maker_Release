@@ -58,7 +58,6 @@ public class DBCreds {
 	 * User Credentials Window
 	 */
 	public static void DBCredentials() {
-		// Creating...
 		DBStage = new Stage();
 		DBPanel = new BorderPane();
 		DBScene = new Scene(DBPanel, 300, 150);
@@ -80,7 +79,6 @@ public class DBCreds {
 		hButton = new HBox();
 		btnAccept = new Button("Login");
 		
-		// Configuring
 		lblUser.setId("lblUser");
 		txtUser.requestFocus();
 		hUser.setAlignment(Pos.CENTER);
@@ -108,10 +106,9 @@ public class DBCreds {
 		DBStage.setScene(DBScene);
 		DBPanel.setCenter(vCredentials);
 		DBStage.setResizable(false);
-		DBStage.getIcons().add(new Image("file:res/DBWindow_DBIcon.png"));
+		DBStage.getIcons().add(new Image("file:res/DBWindow_Icon.png"));
 		DBScene.getStylesheets().add("file:styles/DBWindow.css");
 		
-		// Showing && Centering...
 		DBStage.show();
 		Helper_Methods.CenterStage(DBStage);
 	}
