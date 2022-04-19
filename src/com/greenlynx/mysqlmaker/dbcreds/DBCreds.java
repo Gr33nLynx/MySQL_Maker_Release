@@ -89,6 +89,7 @@ public class DBCreds {
 		hPassword.getChildren().addAll(lblPassword, txtPassword);
 		
 		lblDB.setId("lblDB");
+		hDB.setPadding(new Insets(0, 0, 0, 51));
 		hDB.setAlignment(Pos.CENTER);
 		hDB.getChildren().addAll(lblDB, txtDB);
 		
