@@ -112,6 +112,7 @@ public class DBStatus {
 				MainWindow.lblStatusText.setText("ON");
 				MainWindow.lblStatusText.setStyle("-fx-text-fill: green;");
 				
+				MainWindow.toolsInsert.setDisable(false);
 				MainWindow.toolsSelect.setDisable(false);
 				MainWindow.toolsUpdate.setDisable(false);
 				MainWindow.toolsDelete.setDisable(false);
