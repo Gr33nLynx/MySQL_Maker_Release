@@ -60,12 +60,14 @@ public class MainWindow {
 	public static Menu helpMenu;
 	public static Menu mysqlMenu;
 	public static Menu toolsMenu;
+	public static Menu toolsAdvancedMenu;
 	public static Menu toolsSimpleMenu;
 	public static MenuBar topBar;
 	public static MenuItem helpAbout;
 	public static MenuItem mysqlConnect;
 	public static MenuItem mysqlDisconnect;
 	public static MenuItem toolsDelete;
+	public static MenuItem toolsInsert;
 	public static MenuItem toolsSelect;
 	public static MenuItem toolsUpdate;
 	public static Scene mainScene;
@@ -142,14 +144,17 @@ public class MainWindow {
 		
 		toolsMenu = new Menu("Tools");
 		toolsSimpleMenu = new Menu("Simple Queries");
+		toolsInsert = new MenuItem("INSERT query");
+		toolsInsert.setDisable(true);
 		toolsSelect = new MenuItem("SELECT query");
 		toolsSelect.setDisable(true);
 		toolsUpdate = new MenuItem("UPDATE query");
 		toolsUpdate.setDisable(true);
 		toolsDelete = new MenuItem("DELETE query");
 		toolsDelete.setDisable(true);
-		toolsSimpleMenu.getItems().addAll(toolsSelect, toolsUpdate, toolsDelete);
-		toolsMenu.getItems().add(toolsSimpleMenu);
+		toolsSimpleMenu.getItems().addAll(toolsInsert, toolsSelect, toolsUpdate, toolsDelete);
+		toolsAdvancedMenu = new Menu("Advanced Queries");
+		toolsMenu.getItems().addAll(toolsSimpleMenu, toolsAdvancedMenu);
 		
 		helpMenu = new Menu("Help");
 		helpAbout = new MenuItem("About MySQL Maker");
