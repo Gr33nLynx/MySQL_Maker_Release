@@ -20,3 +20,14 @@
 	-fx-background-position: center;
 	-fx-background-size: 600 300;
 }
+
+#lblTitle {
+	-fx-font-size: 17px;
+	-fx-font-weight: bold;
+	-fx-underline: true;
+}
+
+#lblDescription, #lblDonation {
+	-fx-font-size: 13px;
+	-fx-font-weight: bold;
+}
