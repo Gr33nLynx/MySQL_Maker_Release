@@ -1,0 +1,22 @@
+/**
+ * PROJECT NAME: 
+ * 		MySQL Maker
+ * PROJECT DESCRIPTION:
+ * 		GUI for the creation of MySQL code in an automated way
+ * FILE NAME:
+ * 		AboutWindow.css
+ * FILE DESCRIPTION:
+ * 		DB Credentials Window's Stylesheet
+ * NOTES:
+ * 		All plagiarism attempts // Code theft will be reported by the 
+ * 		author
+ * COPYRIGHT:
+ * 		©2022 GR33NLYNX
+ */
+
+.root {
+	-fx-background-image: url("file:res/AboutWindow_Background.jpg");
+	-fx-background-repeat: no-repeat no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 600 300;
+}

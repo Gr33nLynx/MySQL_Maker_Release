@@ -48,7 +48,7 @@ public class About {
 		AboutStage.setScene(AboutScene);
 		AboutStage.setResizable(false);
 		AboutStage.getIcons().add(new Image("file:res/AboutWindow_Icon.png"));
-		//AboutScene.getStylesheets().add("file:styles/DBWindow.css");
+		AboutScene.getStylesheets().add("file:styles/AboutWindow.css");
 		
 		AboutStage.show();
 		Helper_Methods.CenterStage(AboutStage);
