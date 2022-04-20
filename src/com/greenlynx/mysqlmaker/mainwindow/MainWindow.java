@@ -1,6 +1,7 @@
 package com.greenlynx.mysqlmaker.mainwindow;
 
 // ============= Imports =============
+import com.greenlynx.mysqlmaker.about.About;
 import com.greenlynx.mysqlmaker.dbstatus.DBStatus;
 import com.greenlynx.mysqlmaker.helpers.Helper_Methods;
 import com.greenlynx.mysqlmaker.trial.Trial;
@@ -76,8 +77,7 @@ public class MainWindow {
 		
 	/**
 	 * Main Window's Loader
-	 * @throws IOException 
-	 * @throws Exception
+	 * @throws IOException
 	 */
 	public static void MainWindowLoader() throws IOException {
 		if (!Trial.TrialChecker()) {
@@ -158,6 +158,7 @@ public class MainWindow {
 		
 		helpMenu = new Menu("Help");
 		helpAbout = new MenuItem("About MySQL Maker");
+		helpAbout.setOnAction(e -> About.AboutWindowLoader());
 		helpMenu.getItems().add(helpAbout);
 		
 		topBar.getMenus().addAll(mysqlMenu, toolsMenu, helpMenu);
