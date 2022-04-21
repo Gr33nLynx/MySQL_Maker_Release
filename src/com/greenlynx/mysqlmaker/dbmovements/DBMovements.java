@@ -35,15 +35,15 @@ public class DBMovements {
 		
 	}
 	
-	public static void Procedure() {
+	public static void ProcedureQuery() {
 		
 	}
 	
-	public static void Function() {
+	public static void FunctionQuery() {
 		
 	}
 	
-	public static void Trigger() {
+	public static void TriggerQuery() {
 		
 	}
 	
