@@ -68,8 +68,11 @@ public class MainWindow {
 	public static MenuItem mysqlConnect;
 	public static MenuItem mysqlDisconnect;
 	public static MenuItem toolsDelete;
+	public static MenuItem toolsFunction;
 	public static MenuItem toolsInsert;
+	public static MenuItem toolsProcedure;
 	public static MenuItem toolsSelect;
+	public static MenuItem toolsTrigger;
 	public static MenuItem toolsUpdate;
 	public static Scene mainScene;
 	public static Stage mainStage;
@@ -144,16 +147,23 @@ public class MainWindow {
 		
 		toolsMenu = new Menu("Tools");
 		toolsSimpleMenu = new Menu("Simple Queries");
-		toolsInsert = new MenuItem("INSERT query");
+		toolsInsert = new MenuItem("INSERT Query");
 		toolsInsert.setDisable(true);
-		toolsSelect = new MenuItem("SELECT query");
+		toolsSelect = new MenuItem("SELECT Query");
 		toolsSelect.setDisable(true);
-		toolsUpdate = new MenuItem("UPDATE query");
+		toolsUpdate = new MenuItem("UPDATE Query");
 		toolsUpdate.setDisable(true);
-		toolsDelete = new MenuItem("DELETE query");
+		toolsDelete = new MenuItem("DELETE Query");
 		toolsDelete.setDisable(true);
 		toolsSimpleMenu.getItems().addAll(toolsInsert, toolsSelect, toolsUpdate, toolsDelete);
 		toolsAdvancedMenu = new Menu("Advanced Queries");
+		toolsProcedure = new MenuItem("PROCEDURE Query");
+		toolsProcedure.setDisable(true);
+		toolsFunction = new MenuItem("FUNCTION Query");
+		toolsFunction.setDisable(true);
+		toolsTrigger = new MenuItem("TRIGGER Query");
+		toolsTrigger.setDisable(true);
+		toolsAdvancedMenu.getItems().addAll(toolsProcedure, toolsFunction, toolsTrigger);
 		toolsMenu.getItems().addAll(toolsSimpleMenu, toolsAdvancedMenu);
 		
 		helpMenu = new Menu("Help");
