@@ -2,7 +2,6 @@ package com.greenlynx.mysqlmaker.dbmovements;
 
 // ============= Imports =============
 import com.greenlynx.mysqlmaker.helpers.Helper_Methods;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
