@@ -66,7 +66,7 @@ public class DBMovements {
 		insertStage.setScene(insertScene);
 		insertStage.setResizable(false);
 		insertStage.getIcons().add(new Image("file:res/DBMovements_Insert.png"));
-		//insertScene.getStylesheets().add("file:styles/insertWindow.css");
+		insertScene.getStylesheets().add("file:styles/DBMovements_Insert.css");
 		insertStage.show();
 		Helper_Methods.CenterStage(insertStage);
 	}
@@ -79,7 +79,7 @@ public class DBMovements {
 		selectStage.setScene(selectScene);
 		selectStage.setResizable(false);
 		selectStage.getIcons().add(new Image("file:res/DBMovements_Select.png"));
-		selectScene.getStylesheets().add("file:res/DBMovements_Select.css");
+		selectScene.getStylesheets().add("file:styles/DBMovements_Select.css");
 		selectStage.show();
 		Helper_Methods.CenterStage(selectStage);
 	}
@@ -92,7 +92,7 @@ public class DBMovements {
 		updateStage.setScene(updateScene);
 		updateStage.setResizable(false);
 		updateStage.getIcons().add(new Image("file:res/DBMovements_Update.png"));
-		updateScene.getStylesheets().add("file:res/DBMovements_Update.css");
+		updateScene.getStylesheets().add("file:styles/DBMovements_Update.css");
 		updateStage.show();
 		Helper_Methods.CenterStage(updateStage);
 	}
@@ -105,7 +105,7 @@ public class DBMovements {
 		deleteStage.setScene(deleteScene);
 		deleteStage.setResizable(false);
 		deleteStage.getIcons().add(new Image("file:res/DBMovements_Delete.png"));
-		deleteScene.getStylesheets().add("file:res/DBMovements_Delete.css");
+		deleteScene.getStylesheets().add("file:styles/DBMovements_Delete.css");
 		deleteStage.show();
 		Helper_Methods.CenterStage(deleteStage);
 	}
