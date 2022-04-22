@@ -4,9 +4,9 @@
  * PROJECT DESCRIPTION:
  * 		GUI for the creation of MySQL code in an automated way
  * FILE NAME:
- * 		MainWindow.java
+ * 		AllStart.sql
  * FILE DESCRIPTION:
- * 		Application's Main Window's Class
+ * 		Application's BD creator script
  * NOTES:
  * 		All plagiarism attempts // Code theft will be reported by the 
  * COPYRIGHT:
