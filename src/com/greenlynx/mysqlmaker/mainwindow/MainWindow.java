@@ -2,6 +2,7 @@ package com.greenlynx.mysqlmaker.mainwindow;
 
 // ============= Imports =============
 import com.greenlynx.mysqlmaker.about.About;
+import com.greenlynx.mysqlmaker.dbmovements.DBMovements;
 import com.greenlynx.mysqlmaker.dbstatus.DBStatus;
 import com.greenlynx.mysqlmaker.helpers.Helper_Methods;
 import com.greenlynx.mysqlmaker.trial.Trial;
@@ -149,20 +150,27 @@ public class MainWindow {
 		toolsSimpleMenu = new Menu("Simple Queries");
 		toolsInsert = new MenuItem("INSERT Query");
 		toolsInsert.setDisable(true);
+		toolsInsert.setOnAction(e -> DBMovements.InsertQuery());
 		toolsSelect = new MenuItem("SELECT Query");
 		toolsSelect.setDisable(true);
+		toolsSelect.setOnAction(e -> DBMovements.SelectQuery());
 		toolsUpdate = new MenuItem("UPDATE Query");
 		toolsUpdate.setDisable(true);
+		toolsUpdate.setOnAction(e -> DBMovements.UpdateQuery());
 		toolsDelete = new MenuItem("DELETE Query");
 		toolsDelete.setDisable(true);
+		toolsDelete.setOnAction(e -> DBMovements.DeleteQuery());
 		toolsSimpleMenu.getItems().addAll(toolsInsert, toolsSelect, toolsUpdate, toolsDelete);
 		toolsAdvancedMenu = new Menu("Advanced Queries");
 		toolsProcedure = new MenuItem("PROCEDURE Query");
 		toolsProcedure.setDisable(true);
+		toolsProcedure.setOnAction(e -> DBMovements.ProcedureQuery());
 		toolsFunction = new MenuItem("FUNCTION Query");
 		toolsFunction.setDisable(true);
+		toolsFunction.setOnAction(e -> DBMovements.FunctionQuery());
 		toolsTrigger = new MenuItem("TRIGGER Query");
 		toolsTrigger.setDisable(true);
+		toolsTrigger.setOnAction(e -> DBMovements.TriggerQuery());
 		toolsAdvancedMenu.getItems().addAll(toolsProcedure, toolsFunction, toolsTrigger);
 		toolsMenu.getItems().addAll(toolsSimpleMenu, toolsAdvancedMenu);
 		
