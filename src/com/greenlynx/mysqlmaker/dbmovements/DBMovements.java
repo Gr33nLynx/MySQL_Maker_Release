@@ -1,5 +1,9 @@
 package com.greenlynx.mysqlmaker.dbmovements;
 
+import java.sql.CallableStatement;
+import java.sql.SQLException;
+
+import com.greenlynx.mysqlmaker.dbstatus.DBStatus;
 // ============= Imports =============
 import com.greenlynx.mysqlmaker.helpers.Helper_Methods;
 import javafx.scene.Scene;
@@ -60,17 +64,26 @@ public class DBMovements {
 	public static void InsertQuery() {
 		insertStage = new Stage();
 		insertPanel = new BorderPane();
-		insertScene = new Scene(insertPanel, 600, 400);
+		insertScene = new Scene(insertPanel, 400, 300);
 		insertStage.setTitle("Insert Query Window");
 		insertStage.setScene(insertScene);
 		insertStage.setResizable(false);
 		insertStage.getIcons().add(new Image("file:res/DBMovements_Insert.png"));
 		insertScene.getStylesheets().add("file:styles/DBMovements_Insert.css");
+		//insertStage.setOnShowing(e -> InsertQueryAction());
 		insertStage.show();
 		Helper_Methods.CenterStage(insertStage);
 	}
 	
 	public static void InsertQueryAction() {
+		try {
+			CallableStatement statement = DBStatus.DBLink.prepareCall("{ CALL sp_Insert (?, ?, ?) }");
+			
+			statement.execute();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -88,7 +101,14 @@ public class DBMovements {
 	}
 	
 	public static void SelectQueryAction() {
-		
+		try {
+			CallableStatement statement = DBStatus.DBLink.prepareCall("{ CALL sp_Select (?, ?, ?) }");
+			
+			statement.execute();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void UpdateQuery() {
@@ -105,7 +125,14 @@ public class DBMovements {
 	}
 	
 	public static void UpdateQueryAction() {
-		
+		try {
+			CallableStatement statement = DBStatus.DBLink.prepareCall("{ CALL sp_Update (?, ?, ?, ?) }");
+			
+			statement.execute();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void DeleteQuery() {
@@ -122,7 +149,14 @@ public class DBMovements {
 	}
 	
 	public static void DeleteQueryAction() {
-		
+		try {
+			CallableStatement statement = DBStatus.DBLink.prepareCall("{ CALL sp_Delete (?, ?, ?) }");
+			
+			statement.execute();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void ProcedureQuery() {
