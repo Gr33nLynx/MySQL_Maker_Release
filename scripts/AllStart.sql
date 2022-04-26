@@ -29,7 +29,7 @@
 	BEGIN
 		DECLARE InsertQuery LONGTEXT;
         
-        SET @InsertQuery = CONCAT('INSERT INTO ', TableToInsert, ' (' , FieldsToFill , ') VALUES (' , CAST(ValuesToInsert AS CHAR) , ');');
+        SET @InsertQuery = CONCAT('INSERT INTO ', TableToInsert, ' (' , FieldsToFill , ') VALUES (' , ValuesToInsert , ');');
         
         PREPARE InsertQueryStatement FROM @InsertQuery;
         
@@ -47,17 +47,15 @@
 	DELIMITER $$
 	CREATE PROCEDURE sp_Select (DataToRecover VARCHAR(50), TableToRecover VARCHAR(50), ConditionToApply LONGTEXT)
 	BEGIN
-		SELECT `DataToRecover` FROM `TableToRecover` WHERE `ConditionToApply`;
+        DECLARE SelectQuery LONGTEXT;
         
-        DECLARE InsertQuery LONGTEXT;
+        SET @SelectQuery = CONCAT('SELECT ', DataToRecover, ' FROM ', TableToRecover, ' WHERE ', ConditionToApply);
         
-        SET @InsertQuery = CONCAT('INSERT INTO ', TableToInsert, ' (' , FieldsToFill , ') VALUES (' , CAST(ValuesToInsert AS CHAR) , ');');
+        PREPARE SelectQueryStatement FROM @InsertQuery;
         
-        PREPARE InsertQueryStatement FROM @InsertQuery;
+        EXECUTE SelectQueryStatement;
         
-        EXECUTE InsertQueryStatement;
-        
-        DEALLOCATE PREPARE InsertQueryStatement;
+        DEALLOCATE PREPARE SelectQueryStatement;
 	END
 	$$
 	DELIMITER ;
