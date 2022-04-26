@@ -25,9 +25,17 @@
 /* ------------------------------------------------------------------------------------------------------ */
 	DROP PROCEDURE IF EXISTS sp_Insert;
 	DELIMITER $$
-	CREATE PROCEDURE sp_Insert (TableToInsert VARCHAR(50), FieldsToFill LONGTEXT, ValuesToInsert LONGTEXT)
+	CREATE PROCEDURE sp_Insert (IN TableToInsert VARCHAR(50), IN FieldsToFill LONGTEXT, IN ValuesToInsert LONGTEXT)
 	BEGIN
-		INSERT INTO `TableToInsert` (`FieldsToFill`) VALUES (`ValuesToInsert`); 
+		DECLARE InsertQuery LONGTEXT;
+        
+        SET @InsertQuery = CONCAT('INSERT INTO ', TableToInsert, ' (' , FieldsToFill , ') VALUES (' , CAST(ValuesToInsert AS CHAR) , ');');
+        
+        PREPARE InsertQueryStatement FROM @InsertQuery;
+        
+        EXECUTE InsertQueryStatement;
+        
+        DEALLOCATE PREPARE InsertQueryStatement;
 	END
 	$$
 	DELIMITER ;
@@ -40,6 +48,16 @@
 	CREATE PROCEDURE sp_Select (DataToRecover VARCHAR(50), TableToRecover VARCHAR(50), ConditionToApply LONGTEXT)
 	BEGIN
 		SELECT `DataToRecover` FROM `TableToRecover` WHERE `ConditionToApply`;
+        
+        DECLARE InsertQuery LONGTEXT;
+        
+        SET @InsertQuery = CONCAT('INSERT INTO ', TableToInsert, ' (' , FieldsToFill , ') VALUES (' , CAST(ValuesToInsert AS CHAR) , ');');
+        
+        PREPARE InsertQueryStatement FROM @InsertQuery;
+        
+        EXECUTE InsertQueryStatement;
+        
+        DEALLOCATE PREPARE InsertQueryStatement;
 	END
 	$$
 	DELIMITER ;
@@ -51,7 +69,15 @@
 	DELIMITER $$
 	CREATE PROCEDURE sp_Update (TableToUpdate VARCHAR(50), VariableToUpdate VARCHAR(50), NewValue LONGTEXT, ConditionToApply LONGTEXT)
 	BEGIN
-		UPDATE `TableToUpdate` SET `VariableToUpdate` = `NewValue` WHERE `ConditionToApply`;
+        DECLARE UpdateQuery LONGTEXT;
+        
+        SET @UpdateQuery = CONCAT('UPDATE ', TableToUpdate, ' SET ', VariableToUpdate, ' = ', NewValue, ' WHERE ', ConditionToApply);
+        
+        PREPARE UpdateQueryStatement FROM @UpdateQuery;
+        
+        EXECUTE UpdateQueryStatement;
+        
+        DEALLOCATE PREPARE UpdateQueryStatement;
 	END
 	$$
 	DELIMITER ;
@@ -63,7 +89,15 @@
 	DELIMITER $$
 	CREATE PROCEDURE sp_Delete (TableToRecover VARCHAR(50), ConditionToApply LONGTEXT)
 	BEGIN
-		DELETE FROM `TableToRecover` WHERE `ConditionToApply`;
+        DECLARE DeleteQuery LONGTEXT;
+        
+        SET @DeleteQuery = CONCAT('DELETE FROM ', TableToRecover, ' WHERE ', ConditionToApply);
+        
+        PREPARE DeleteQueryStatement FROM @DeleteQuery;
+        
+        EXECUTE DeleteQueryStatement;
+        
+        DEALLOCATE PREPARE DeleteQueryStatement;
 	END
 	$$
 	DELIMITER ;
