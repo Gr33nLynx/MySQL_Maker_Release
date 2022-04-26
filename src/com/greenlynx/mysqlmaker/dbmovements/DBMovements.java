@@ -70,6 +70,10 @@ public class DBMovements {
 		Helper_Methods.CenterStage(insertStage);
 	}
 	
+	public static void InsertQueryAction() {
+		
+	}
+	
 	public static void SelectQuery() {
 		selectStage = new Stage();
 		selectPanel = new BorderPane();
@@ -81,6 +85,10 @@ public class DBMovements {
 		selectScene.getStylesheets().add("file:styles/DBMovements_Select.css");
 		selectStage.show();
 		Helper_Methods.CenterStage(selectStage);
+	}
+	
+	public static void SelectQueryAction() {
+		
 	}
 	
 	public static void UpdateQuery() {
@@ -96,6 +104,10 @@ public class DBMovements {
 		Helper_Methods.CenterStage(updateStage);
 	}
 	
+	public static void UpdateQueryAction() {
+		
+	}
+	
 	public static void DeleteQuery() {
 		deleteStage = new Stage();
 		deletePanel = new BorderPane();
@@ -107,6 +119,10 @@ public class DBMovements {
 		deleteScene.getStylesheets().add("file:styles/DBMovements_Delete.css");
 		deleteStage.show();
 		Helper_Methods.CenterStage(deleteStage);
+	}
+	
+	public static void DeleteQueryAction() {
+		
 	}
 	
 	public static void ProcedureQuery() {
@@ -122,6 +138,10 @@ public class DBMovements {
 		Helper_Methods.CenterStage(procedureStage);
 	}
 	
+	public static void ProcedureQueryAction() {
+		
+	}
+	
 	public static void FunctionQuery() {
 		functionStage = new Stage();
 		functionPanel = new BorderPane();
@@ -135,6 +155,10 @@ public class DBMovements {
 		Helper_Methods.CenterStage(functionStage);
 	}
 	
+	public static void FunctionQueryAction() {
+		
+	}
+	
 	public static void TriggerQuery() {
 		triggerStage = new Stage();
 		triggerPanel = new BorderPane();
@@ -146,6 +170,10 @@ public class DBMovements {
 		triggerScene.getStylesheets().add("file:styles/DBMovements_Trigger.css");
 		triggerStage.show();
 		Helper_Methods.CenterStage(triggerStage);
+	}
+	
+	public static void TriggerQueryAction() {
+		
 	}
 	
 }
