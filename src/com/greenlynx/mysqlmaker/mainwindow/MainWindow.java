@@ -9,11 +9,13 @@ import com.greenlynx.mysqlmaker.trial.Trial;
 import java.io.IOException;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -50,6 +52,7 @@ public class MainWindow {
 	public static BorderPane mainWindow;
 	public static HBox bottomLeftPanel;
 	public static HBox bottomRightPanel;
+	public static HBox hCenterPanel;
 	public static HBox hCenterTopLeftPanel;
 	public static HBox hCenterTopRightPanel;
 	public static Label lblCreator;
@@ -68,6 +71,7 @@ public class MainWindow {
 	public static MenuItem helpAbout;
 	public static MenuItem mysqlConnect;
 	public static MenuItem mysqlDisconnect;
+	public static TextArea taResult;
 	public static MenuItem toolsDelete;
 	public static MenuItem toolsFunction;
 	public static MenuItem toolsInsert;
@@ -200,6 +204,15 @@ public class MainWindow {
 		lblStatus = new Label("Status: ");
 		lblStatusText = new Label("OFF");
 		
+		hCenterPanel = new HBox();
+		taResult = new TextArea();
+		taResult.setMinWidth(200);
+		taResult.setMaxHeight(250);
+		taResult.setEditable(false);
+		taResult.setVisible(false);
+		hCenterPanel.setAlignment(Pos.CENTER);
+		hCenterPanel.getChildren().add(taResult);
+		
 		lblTitle.setId("lblTitle");
 		hCenterTopLeftPanel.getChildren().add(lblTitle);
 		hCenterTopLeftPanel.setPadding(new Insets(10, 0, 0, 20));
@@ -212,6 +225,7 @@ public class MainWindow {
 		centerTopPanel.setLeft(hCenterTopLeftPanel);
 		centerTopPanel.setRight(hCenterTopRightPanel);
 		centerPanel.setTop(centerTopPanel);
+		centerPanel.setCenter(hCenterPanel);
 		
 		return centerPanel;
 	}
