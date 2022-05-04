@@ -1,0 +1,20 @@
+/**
+ * PROJECT NAME: 
+ * 		MySQL Maker
+ * PROJECT DESCRIPTION:
+ * 		GUI for the creation of MySQL code in an automated way
+ * FILE NAME:
+ * 		DBMovements.css
+ * FILE DESCRIPTION:
+ * 		DB Movements Window's Stylesheet
+ * NOTES:
+ * 		All plagiarism attempts // Code theft will be reported by the 
+ * 		author
+ * COPYRIGHT:
+ * 		©2022 GR33NLYNX
+ */
+
+#lblTableToInsert, #lblFieldsToFill, #lblValuesToInsert {
+	-fx-font-size: 16px;
+	-fx-font-weight: bold;
+}
