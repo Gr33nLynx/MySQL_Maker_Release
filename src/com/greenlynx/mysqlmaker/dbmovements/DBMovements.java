@@ -41,84 +41,101 @@ public class DBMovements {
 	// ======= Attributes =======
 	public static BorderPane insertPanel;
 	public static Button btnInsertExecution;
-	public static HBox hFields;
+	public static HBox hInsertFields;
 	public static HBox hInsertExecution;
-	public static HBox hTable;
-	public static HBox hValues;
-	public static Label lblFieldsToFill;
+	public static HBox hInsertTable;
+	public static HBox hInsertValues;
+	public static Label lblInsertFieldsToFill;
 	public static Label lblTableToInsert;
 	public static Label lblValuesToInsert;
 	public static Scene insertScene;
 	public static Stage insertStage;
-	public static TextField txtFieldsToFill;
+	public static TextField txtInsertFieldsToFill;
 	public static TextField txtTableToInsert;
 	public static TextField txtValuesToInsert;
 	public static VBox vInsertBox;
 	
-	public static BorderPane updatePanel;
-	public static Label lblConditionToApplyUpdate;
-	public static Label lblNewValue;
+	public static BorderPane SelectPanel;
+	public static Button btnSelectExecution;
+	public static HBox hSelectFields;
+	public static HBox hSelectExecution;
+	public static HBox hSelectTable;
+	public static HBox hSelectValues;
+	public static Label lblSelectFieldsToFill;
+	public static Label lblTableToSelect;
+	public static Label lblValuesToSelect;
+	public static Scene SelectScene;
+	public static Stage SelectStage;
+	public static TextField txtSelectFieldsToFill;
+	public static TextField txtTableToSelect;
+	public static TextField txtValuesToSelect;
+	public static VBox vSelectBox;
+	
+	public static BorderPane UpdatePanel;
+	public static Button btnUpdateExecution;
+	public static HBox hUpdateFields;
+	public static HBox hUpdateExecution;
+	public static HBox hUpdateTable;
+	public static HBox hUpdateValues;
+	public static Label lblUpdateFieldsToFill;
 	public static Label lblTableToUpdate;
-	public static Label lblVariableToUpdate;
-	public static Scene updateScene;
-	public static Stage updateStage;
+	public static Label lblValuesToUpdate;
+	public static Scene UpdateScene;
+	public static Stage UpdateStage;
+	public static TextField txtUpdateFieldsToFill;
+	public static TextField txtTableToUpdate;
+	public static TextField txtValuesToUpdate;
+	public static VBox vUpdateBox;
 	
-	public static BorderPane selectPanel;
-	public static Label lblConditionToApplySelect;
-	public static Label lblDataToRecover;
-	public static Label lblTableToRecover;
-	public static Scene selectScene;
-	public static Stage selectStage;
-	
-	public static BorderPane deletePanel;
-	public static Scene deleteScene;
-	public static Stage deleteStage;
-
-	public static BorderPane procedurePanel;
-	public static Scene procedureScene;
-	public static Stage procedureStage;
-	
-	public static BorderPane functionPanel;
-	public static Scene functionScene;
-	public static Stage functionStage;
-	
-	public static BorderPane triggerPanel;
-	public static Scene triggerScene;
-	public static Stage triggerStage;
+	public static BorderPane DeletePanel;
+	public static Button btnDeleteExecution;
+	public static HBox hDeleteFields;
+	public static HBox hDeleteExecution;
+	public static HBox hDeleteTable;
+	public static HBox hDeleteValues;
+	public static Label lblDeleteFieldsToFill;
+	public static Label lblTableToDelete;
+	public static Label lblValuesToDelete;
+	public static Scene DeleteScene;
+	public static Stage DeleteStage;
+	public static TextField txtDeleteFieldsToFill;
+	public static TextField txtTableToDelete;
+	public static TextField txtValuesToDelete;
+	public static VBox vDeleteBox;
 	// ==========================
 	
 	public static void InsertQuery() {
 		insertStage = new Stage();
 		insertPanel = new BorderPane();
-		insertScene = new Scene(insertPanel, 400, 300);
+		insertScene = new Scene(insertPanel, 300, 150);
 		
 		vInsertBox = new VBox();
 		
-		hTable = new HBox();
+		hInsertTable = new HBox();
 		lblTableToInsert = new Label("Table Name:");
 		lblTableToInsert.setId("lblTableToInsert");
 		txtTableToInsert = new TextField();
-		hTable.setAlignment(Pos.CENTER);
-		hTable.setSpacing(10);
-		hTable.getChildren().addAll(lblTableToInsert, txtTableToInsert);
+		hInsertTable.setAlignment(Pos.CENTER);
+		hInsertTable.setSpacing(10);
+		hInsertTable.getChildren().addAll(lblTableToInsert, txtTableToInsert);
 		
-		hFields = new HBox();
-		lblFieldsToFill = new Label("Fields:");
-		lblFieldsToFill.setId("lblFieldsToFill");
-		txtFieldsToFill = new TextField();
-		hFields.setAlignment(Pos.CENTER);
-		hFields.setPadding(new Insets(0, 0, 0, 47));
-		hFields.setSpacing(10);
-		hFields.getChildren().addAll(lblFieldsToFill, txtFieldsToFill);
+		hInsertFields = new HBox();
+		lblInsertFieldsToFill = new Label("Fields:");
+		lblInsertFieldsToFill.setId("lblFieldsToFill");
+		txtInsertFieldsToFill = new TextField();
+		hInsertFields.setAlignment(Pos.CENTER);
+		hInsertFields.setPadding(new Insets(0, 0, 0, 47));
+		hInsertFields.setSpacing(10);
+		hInsertFields.getChildren().addAll(lblInsertFieldsToFill, txtInsertFieldsToFill);
 		
-		hValues = new HBox();
+		hInsertValues = new HBox();
 		lblValuesToInsert = new Label("Values:");
 		lblValuesToInsert.setId("lblValuesToInsert");
 		txtValuesToInsert = new TextField();
-		hValues.setAlignment(Pos.CENTER);
-		hValues.setPadding(new Insets(0, 0, 0, 41));
-		hValues.setSpacing(10);
-		hValues.getChildren().addAll(lblValuesToInsert, txtValuesToInsert);
+		hInsertFields.setAlignment(Pos.CENTER);
+		hInsertFields.setPadding(new Insets(0, 0, 0, 41));
+		hInsertFields.setSpacing(10);
+		hInsertFields.getChildren().addAll(lblValuesToInsert, txtValuesToInsert);
 		
 		hInsertExecution = new HBox();
 		btnInsertExecution = new Button("Execution!");
@@ -128,7 +145,7 @@ public class DBMovements {
 		hInsertExecution.getChildren().addAll(btnInsertExecution);
 		
 		vInsertBox.setAlignment(Pos.CENTER);
-		vInsertBox.getChildren().addAll(hTable, hFields, hValues, hInsertExecution);
+		vInsertBox.getChildren().addAll(hInsertTable, hInsertFields, hInsertValues, hInsertExecution);
 		
 		insertPanel.setCenter(vInsertBox);
 		
@@ -156,15 +173,57 @@ public class DBMovements {
 	}
 	
 	public static void SelectQuery() {
-		selectStage = new Stage();
-		selectPanel = new BorderPane();
-		selectScene = new Scene(selectPanel, 600, 400);
-		selectStage.setTitle("Select Query Window");
-		selectStage.setScene(selectScene);
-		selectStage.setResizable(false);
-		selectStage.getIcons().add(new Image("file:res/DBMovements_Select.png"));
-		selectStage.show();
-		Helper_Methods.CenterStage(selectStage);
+		SelectStage = new Stage();
+		SelectPanel = new BorderPane();
+		SelectScene = new Scene(SelectPanel, 300, 150);
+		
+		vSelectBox = new VBox();
+		
+		hSelectTable = new HBox();
+		lblTableToSelect = new Label("Table Name:");
+		lblTableToSelect.setId("lblTableToSelect");
+		txtTableToSelect = new TextField();
+		hSelectTable.setAlignment(Pos.CENTER);
+		hSelectTable.setSpacing(10);
+		hSelectTable.getChildren().addAll(lblTableToSelect, txtTableToSelect);
+		
+		hSelectFields = new HBox();
+		lblSelectFieldsToFill = new Label("Fields:");
+		lblSelectFieldsToFill.setId("lblFieldsToFill");
+		txtSelectFieldsToFill = new TextField();
+		hSelectFields.setAlignment(Pos.CENTER);
+		hSelectFields.setPadding(new Insets(0, 0, 0, 47));
+		hSelectFields.setSpacing(10);
+		hSelectFields.getChildren().addAll(lblSelectFieldsToFill, txtSelectFieldsToFill);
+		
+		hSelectValues = new HBox();
+		lblValuesToSelect = new Label("Values:");
+		lblValuesToSelect.setId("lblValuesToSelect");
+		txtValuesToSelect = new TextField();
+		hSelectFields.setAlignment(Pos.CENTER);
+		hSelectFields.setPadding(new Insets(0, 0, 0, 41));
+		hSelectFields.setSpacing(10);
+		hSelectFields.getChildren().addAll(lblValuesToSelect, txtValuesToSelect);
+		
+		hSelectExecution = new HBox();
+		btnSelectExecution = new Button("Execution!");
+		btnSelectExecution.setOnMouseClicked(e -> SelectQueryAction());
+		hSelectExecution.setAlignment(Pos.CENTER);
+		hSelectExecution.setPadding(new Insets(20, 0, 0, 0));
+		hSelectExecution.getChildren().addAll(btnSelectExecution);
+		
+		vSelectBox.setAlignment(Pos.CENTER);
+		vSelectBox.getChildren().addAll(hSelectTable, hSelectFields, hSelectValues, hSelectExecution);
+		
+		SelectPanel.setCenter(vSelectBox);
+		
+		SelectStage.setTitle("Select Query Window");
+		SelectStage.setScene(SelectScene);
+		SelectStage.setResizable(false);
+		SelectStage.getIcons().add(new Image("file:res/DBMovements_Select.png"));
+		SelectScene.getStylesheets().add("file:styles/DBMovements.css");
+		SelectStage.show();
+		Helper_Methods.CenterStage(SelectStage);
 	}
 	
 	public static void SelectQueryAction() {
@@ -179,15 +238,57 @@ public class DBMovements {
 	}
 	
 	public static void UpdateQuery() {
-		updateStage = new Stage();
-		updatePanel = new BorderPane();
-		updateScene = new Scene(updatePanel, 600, 400);
-		updateStage.setTitle("Update Query Window");
-		updateStage.setScene(updateScene);
-		updateStage.setResizable(false);
-		updateStage.getIcons().add(new Image("file:res/DBMovements_Update.png"));
-		updateStage.show();
-		Helper_Methods.CenterStage(updateStage);
+		UpdateStage = new Stage();
+		UpdatePanel = new BorderPane();
+		UpdateScene = new Scene(UpdatePanel, 300, 150);
+		
+		vUpdateBox = new VBox();
+		
+		hUpdateTable = new HBox();
+		lblTableToUpdate = new Label("Table Name:");
+		lblTableToUpdate.setId("lblTableToUpdate");
+		txtTableToUpdate = new TextField();
+		hUpdateTable.setAlignment(Pos.CENTER);
+		hUpdateTable.setSpacing(10);
+		hUpdateTable.getChildren().addAll(lblTableToUpdate, txtTableToUpdate);
+		
+		hUpdateFields = new HBox();
+		lblUpdateFieldsToFill = new Label("Fields:");
+		lblUpdateFieldsToFill.setId("lblFieldsToFill");
+		txtUpdateFieldsToFill = new TextField();
+		hUpdateFields.setAlignment(Pos.CENTER);
+		hUpdateFields.setPadding(new Insets(0, 0, 0, 47));
+		hUpdateFields.setSpacing(10);
+		hUpdateFields.getChildren().addAll(lblUpdateFieldsToFill, txtUpdateFieldsToFill);
+		
+		hUpdateValues = new HBox();
+		lblValuesToUpdate = new Label("Values:");
+		lblValuesToUpdate.setId("lblValuesToUpdate");
+		txtValuesToUpdate = new TextField();
+		hUpdateFields.setAlignment(Pos.CENTER);
+		hUpdateFields.setPadding(new Insets(0, 0, 0, 41));
+		hUpdateFields.setSpacing(10);
+		hUpdateFields.getChildren().addAll(lblValuesToUpdate, txtValuesToUpdate);
+		
+		hUpdateExecution = new HBox();
+		btnUpdateExecution = new Button("Execution!");
+		btnUpdateExecution.setOnMouseClicked(e -> UpdateQueryAction());
+		hUpdateExecution.setAlignment(Pos.CENTER);
+		hUpdateExecution.setPadding(new Insets(20, 0, 0, 0));
+		hUpdateExecution.getChildren().addAll(btnUpdateExecution);
+		
+		vUpdateBox.setAlignment(Pos.CENTER);
+		vUpdateBox.getChildren().addAll(hUpdateTable, hUpdateFields, hUpdateValues, hUpdateExecution);
+		
+		UpdatePanel.setCenter(vUpdateBox);
+		
+		UpdateStage.setTitle("Update Query Window");
+		UpdateStage.setScene(UpdateScene);
+		UpdateStage.setResizable(false);
+		UpdateStage.getIcons().add(new Image("file:res/DBMovements_Update.png"));
+		UpdateScene.getStylesheets().add("file:styles/DBMovements.css");
+		UpdateStage.show();
+		Helper_Methods.CenterStage(UpdateStage);
 	}
 	
 	public static void UpdateQueryAction() {
@@ -202,15 +303,58 @@ public class DBMovements {
 	}
 	
 	public static void DeleteQuery() {
-		deleteStage = new Stage();
-		deletePanel = new BorderPane();
-		deleteScene = new Scene(deletePanel, 600, 400);
-		deleteStage.setTitle("Delete Query Window");
-		deleteStage.setScene(deleteScene);
-		deleteStage.setResizable(false);
-		deleteStage.getIcons().add(new Image("file:res/DBMovements_Delete.png"));
-		deleteStage.show();
-		Helper_Methods.CenterStage(deleteStage);
+		DeleteStage = new Stage();
+		DeleteStage = new Stage();
+		DeletePanel = new BorderPane();
+		DeleteScene = new Scene(DeletePanel, 300, 150);
+		
+		vDeleteBox = new VBox();
+		
+		hDeleteTable = new HBox();
+		lblTableToDelete = new Label("Table Name:");
+		lblTableToDelete.setId("lblTableToDelete");
+		txtTableToDelete = new TextField();
+		hDeleteTable.setAlignment(Pos.CENTER);
+		hDeleteTable.setSpacing(10);
+		hDeleteTable.getChildren().addAll(lblTableToDelete, txtTableToDelete);
+		
+		hDeleteFields = new HBox();
+		lblDeleteFieldsToFill = new Label("Fields:");
+		lblDeleteFieldsToFill.setId("lblFieldsToFill");
+		txtDeleteFieldsToFill = new TextField();
+		hDeleteFields.setAlignment(Pos.CENTER);
+		hDeleteFields.setPadding(new Insets(0, 0, 0, 47));
+		hDeleteFields.setSpacing(10);
+		hDeleteFields.getChildren().addAll(lblDeleteFieldsToFill, txtDeleteFieldsToFill);
+		
+		hDeleteValues = new HBox();
+		lblValuesToDelete = new Label("Values:");
+		lblValuesToDelete.setId("lblValuesToDelete");
+		txtValuesToDelete = new TextField();
+		hDeleteFields.setAlignment(Pos.CENTER);
+		hDeleteFields.setPadding(new Insets(0, 0, 0, 41));
+		hDeleteFields.setSpacing(10);
+		hDeleteFields.getChildren().addAll(lblValuesToDelete, txtValuesToDelete);
+		
+		hDeleteExecution = new HBox();
+		btnDeleteExecution = new Button("Execution!");
+		btnDeleteExecution.setOnMouseClicked(e -> DeleteQueryAction());
+		hDeleteExecution.setAlignment(Pos.CENTER);
+		hDeleteExecution.setPadding(new Insets(20, 0, 0, 0));
+		hDeleteExecution.getChildren().addAll(btnDeleteExecution);
+		
+		vDeleteBox.setAlignment(Pos.CENTER);
+		vDeleteBox.getChildren().addAll(hDeleteTable, hDeleteFields, hDeleteValues, hDeleteExecution);
+		
+		DeletePanel.setCenter(vDeleteBox);
+		
+		DeleteStage.setTitle("Delete Query Window");
+		DeleteStage.setScene(DeleteScene);
+		DeleteStage.setResizable(false);
+		DeleteStage.getIcons().add(new Image("file:res/DBMovements_Delete.png"));
+		DeleteScene.getStylesheets().add("file:styles/DBMovements.css");
+		DeleteStage.show();
+		Helper_Methods.CenterStage(DeleteStage);
 	}
 	
 	public static void DeleteQueryAction() {
@@ -223,53 +367,5 @@ public class DBMovements {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void ProcedureQuery() {
-		procedureStage = new Stage();
-		procedurePanel = new BorderPane();
-		procedureScene = new Scene(procedurePanel, 600, 400);
-		procedureStage.setTitle("Procedure Query Window");
-		procedureStage.setScene(procedureScene);
-		procedureStage.setResizable(false);
-		procedureStage.getIcons().add(new Image("file:res/DBMovements_Procedure.png"));
-		procedureStage.show();
-		Helper_Methods.CenterStage(procedureStage);
-	}
-	
-	public static void ProcedureQueryAction() {
-		
-	}
-	
-	public static void FunctionQuery() {
-		functionStage = new Stage();
-		functionPanel = new BorderPane();
-		functionScene = new Scene(functionPanel, 600, 400);
-		functionStage.setTitle("Function Query Window");
-		functionStage.setScene(functionScene);
-		functionStage.setResizable(false);
-		functionStage.getIcons().add(new Image("file:res/DBMovements_Function.png"));
-		functionStage.show();
-		Helper_Methods.CenterStage(functionStage);
-	}
-	
-	public static void FunctionQueryAction() {
-		
-	}
-	
-	public static void TriggerQuery() {
-		triggerStage = new Stage();
-		triggerPanel = new BorderPane();
-		triggerScene = new Scene(triggerPanel, 600, 400);
-		triggerStage.setTitle("Trigger Query Window");
-		triggerStage.setScene(triggerScene);
-		triggerStage.setResizable(false);
-		triggerStage.getIcons().add(new Image("file:res/DBMovements_Trigger.png"));
-		triggerStage.show();
-		Helper_Methods.CenterStage(triggerStage);
-	}
-	
-	public static void TriggerQueryAction() {
-		
-	}
-	
+
 }
