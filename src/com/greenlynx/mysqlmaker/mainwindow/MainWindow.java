@@ -168,13 +168,10 @@ public class MainWindow {
 		toolsAdvancedMenu = new Menu("Advanced Queries");
 		toolsProcedure = new MenuItem("PROCEDURE Query");
 		toolsProcedure.setDisable(true);
-		toolsProcedure.setOnAction(e -> DBMovements.ProcedureQuery());
 		toolsFunction = new MenuItem("FUNCTION Query");
 		toolsFunction.setDisable(true);
-		toolsFunction.setOnAction(e -> DBMovements.FunctionQuery());
 		toolsTrigger = new MenuItem("TRIGGER Query");
 		toolsTrigger.setDisable(true);
-		toolsTrigger.setOnAction(e -> DBMovements.TriggerQuery());
 		toolsAdvancedMenu.getItems().addAll(toolsProcedure, toolsFunction, toolsTrigger);
 		toolsMenu.getItems().addAll(toolsSimpleMenu, toolsAdvancedMenu);
 		
