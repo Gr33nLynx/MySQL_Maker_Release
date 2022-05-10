@@ -165,15 +165,15 @@ public class MainWindow {
 		toolsDelete.setDisable(true);
 		toolsDelete.setOnAction(e -> DBMovements.DeleteQuery());
 		toolsSimpleMenu.getItems().addAll(toolsInsert, toolsSelect, toolsUpdate, toolsDelete);
-		toolsAdvancedMenu = new Menu("Advanced Queries");
-		toolsProcedure = new MenuItem("PROCEDURE Query");
-		toolsProcedure.setDisable(true);
-		toolsFunction = new MenuItem("FUNCTION Query");
-		toolsFunction.setDisable(true);
-		toolsTrigger = new MenuItem("TRIGGER Query");
-		toolsTrigger.setDisable(true);
-		toolsAdvancedMenu.getItems().addAll(toolsProcedure, toolsFunction, toolsTrigger);
-		toolsMenu.getItems().addAll(toolsSimpleMenu, toolsAdvancedMenu);
+		//toolsAdvancedMenu = new Menu("Advanced Queries");
+		//toolsProcedure = new MenuItem("PROCEDURE Query");
+		//toolsProcedure.setDisable(true);
+		//toolsFunction = new MenuItem("FUNCTION Query");
+		//toolsFunction.setDisable(true);
+		//toolsTrigger = new MenuItem("TRIGGER Query");
+		//toolsTrigger.setDisable(true);
+		//toolsAdvancedMenu.getItems().addAll(toolsProcedure, toolsFunction, toolsTrigger);
+		toolsMenu.getItems().addAll(toolsSimpleMenu/*, toolsAdvancedMenu*/);
 		
 		helpMenu = new Menu("Help");
 		helpAbout = new MenuItem("About MySQL Maker");
