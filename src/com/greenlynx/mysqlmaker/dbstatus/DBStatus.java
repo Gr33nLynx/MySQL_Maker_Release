@@ -117,6 +117,9 @@ public class DBStatus {
 				MainWindow.toolsUpdate.setDisable(false);
 				MainWindow.toolsDelete.setDisable(false);
 				
+				MainWindow.taResult.setVisible(true);
+				MainWindow.taResult.setText("Query Results Here:\n");
+				
 				//MainWindow.toolsProcedure.setDisable(false);
 				//MainWindow.toolsFunction.setDisable(false);
 				//MainWindow.toolsTrigger.setDisable(false);
