@@ -117,9 +117,9 @@ public class DBStatus {
 				MainWindow.toolsUpdate.setDisable(false);
 				MainWindow.toolsDelete.setDisable(false);
 				
-				MainWindow.toolsProcedure.setDisable(false);
-				MainWindow.toolsFunction.setDisable(false);
-				MainWindow.toolsTrigger.setDisable(false);
+				//MainWindow.toolsProcedure.setDisable(false);
+				//MainWindow.toolsFunction.setDisable(false);
+				//MainWindow.toolsTrigger.setDisable(false);
 			} 
 			catch (SQLException e) {
 				Helper_Methods.ErrorStage(400,
