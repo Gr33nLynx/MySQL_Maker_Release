@@ -3,7 +3,10 @@ package com.greenlynx.mysqlmaker.dbmovements;
 // ============= Imports =============
 import com.greenlynx.mysqlmaker.dbstatus.DBStatus;
 import com.greenlynx.mysqlmaker.helpers.Helper_Methods;
+import com.greenlynx.mysqlmaker.mainwindow.MainWindow;
+
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javafx.geometry.Insets;
@@ -60,31 +63,31 @@ public class DBMovements {
 	public static HBox hSelectFields;
 	public static HBox hSelectExecution;
 	public static HBox hSelectTable;
-	public static HBox hSelectValues;
 	public static Label lblSelectFieldsToFill;
 	public static Label lblTableToSelect;
-	public static Label lblValuesToSelect;
 	public static Scene SelectScene;
 	public static Stage SelectStage;
 	public static TextField txtSelectFieldsToFill;
 	public static TextField txtTableToSelect;
-	public static TextField txtValuesToSelect;
 	public static VBox vSelectBox;
 	
 	public static BorderPane UpdatePanel;
 	public static Button btnUpdateExecution;
 	public static HBox hUpdateFields;
 	public static HBox hUpdateExecution;
+	public static HBox hUpdateNewValues;
 	public static HBox hUpdateTable;
-	public static HBox hUpdateValues;
+	public static HBox hUpdateCondition;
+	public static Label lblUpdateNewValues;
 	public static Label lblUpdateFieldsToFill;
 	public static Label lblTableToUpdate;
-	public static Label lblValuesToUpdate;
+	public static Label lblConditionToUpdate;
 	public static Scene UpdateScene;
 	public static Stage UpdateStage;
 	public static TextField txtUpdateFieldsToFill;
+	public static TextField txtUpdateNewValues;
 	public static TextField txtTableToUpdate;
-	public static TextField txtValuesToUpdate;
+	public static TextField txtConditionToUpdate;
 	public static VBox vUpdateBox;
 	
 	public static BorderPane DeletePanel;
@@ -132,10 +135,10 @@ public class DBMovements {
 		lblValuesToInsert = new Label("Values:");
 		lblValuesToInsert.setId("lblValuesToInsert");
 		txtValuesToInsert = new TextField();
-		hInsertFields.setAlignment(Pos.CENTER);
-		hInsertFields.setPadding(new Insets(0, 0, 0, 41));
-		hInsertFields.setSpacing(10);
-		hInsertFields.getChildren().addAll(lblValuesToInsert, txtValuesToInsert);
+		hInsertValues.setAlignment(Pos.CENTER);
+		hInsertValues.setPadding(new Insets(0, 0, 0, 41));
+		hInsertValues.setSpacing(10);
+		hInsertValues.getChildren().addAll(lblValuesToInsert, txtValuesToInsert);
 		
 		hInsertExecution = new HBox();
 		btnInsertExecution = new Button("Execution!");
@@ -162,7 +165,21 @@ public class DBMovements {
 		try {
 			CallableStatement statement = DBStatus.DBLink.prepareCall("{ CALL sp_Insert (?, ?, ?) }");
 			
+			statement.setString(1, txtTableToInsert.getText());
+			statement.setString(2, txtInsertFieldsToFill.getText());
+			statement.setString(3, txtValuesToInsert.getText());
+			
 			statement.execute();
+			
+			MainWindow.taResult.setText(MainWindow.taResult.getText() + 
+					"Inserted Data:\n" + 
+					"Table To Insert: " + txtTableToInsert.getText() + 
+					"\n" +
+					"Fields to Fill: " + txtInsertFieldsToFill.getText() + 
+					"\n" +
+					"Values to Insert: " + txtValuesToInsert.getText() + 
+					"\n\n");
+			
 			
 			insertStage.close();
 		} 
@@ -189,21 +206,12 @@ public class DBMovements {
 		
 		hSelectFields = new HBox();
 		lblSelectFieldsToFill = new Label("Fields:");
-		lblSelectFieldsToFill.setId("lblFieldsToFill");
+		lblSelectFieldsToFill.setId("lblSelectFieldsToFill");
 		txtSelectFieldsToFill = new TextField();
 		hSelectFields.setAlignment(Pos.CENTER);
 		hSelectFields.setPadding(new Insets(0, 0, 0, 47));
 		hSelectFields.setSpacing(10);
 		hSelectFields.getChildren().addAll(lblSelectFieldsToFill, txtSelectFieldsToFill);
-		
-		hSelectValues = new HBox();
-		lblValuesToSelect = new Label("Values:");
-		lblValuesToSelect.setId("lblValuesToSelect");
-		txtValuesToSelect = new TextField();
-		hSelectFields.setAlignment(Pos.CENTER);
-		hSelectFields.setPadding(new Insets(0, 0, 0, 41));
-		hSelectFields.setSpacing(10);
-		hSelectFields.getChildren().addAll(lblValuesToSelect, txtValuesToSelect);
 		
 		hSelectExecution = new HBox();
 		btnSelectExecution = new Button("Execution!");
@@ -213,7 +221,7 @@ public class DBMovements {
 		hSelectExecution.getChildren().addAll(btnSelectExecution);
 		
 		vSelectBox.setAlignment(Pos.CENTER);
-		vSelectBox.getChildren().addAll(hSelectTable, hSelectFields, hSelectValues, hSelectExecution);
+		vSelectBox.getChildren().addAll(hSelectFields, hSelectTable, hSelectExecution);
 		
 		SelectPanel.setCenter(vSelectBox);
 		
@@ -228,9 +236,29 @@ public class DBMovements {
 	
 	public static void SelectQueryAction() {
 		try {
-			CallableStatement statement = DBStatus.DBLink.prepareCall("{ CALL sp_Select (?, ?, ?) }");
+			CallableStatement statement = DBStatus.DBLink.prepareCall("{ CALL sp_Select (?, ?) }");
 			
-			statement.execute();
+			statement.setString(1, txtSelectFieldsToFill.getText());
+			statement.setString(2, txtTableToSelect.getText());
+			
+			ResultSet result = statement.executeQuery();
+			
+			MainWindow.taResult.setText(MainWindow.taResult.getText() + 
+					"Selected Data:\n");
+			
+			if (result.isLast()) {
+				MainWindow.taResult.setText(MainWindow.taResult.getText() + 
+						result.getString(1) + ": " + result.getString(2) +
+						"\n\n");
+			}
+			
+			while (result.next()) {
+				MainWindow.taResult.setText(MainWindow.taResult.getText() + 
+					result.getString(1) + ": " + result.getString(2) +
+					"\n\n");
+			}
+			
+			SelectStage.close();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -249,26 +277,36 @@ public class DBMovements {
 		lblTableToUpdate.setId("lblTableToUpdate");
 		txtTableToUpdate = new TextField();
 		hUpdateTable.setAlignment(Pos.CENTER);
+		hUpdateTable.setPadding(new Insets(0, 5, 0, 0));
 		hUpdateTable.setSpacing(10);
 		hUpdateTable.getChildren().addAll(lblTableToUpdate, txtTableToUpdate);
 		
 		hUpdateFields = new HBox();
-		lblUpdateFieldsToFill = new Label("Fields:");
-		lblUpdateFieldsToFill.setId("lblFieldsToFill");
+		lblUpdateFieldsToFill = new Label("Field:");
+		lblUpdateFieldsToFill.setId("lblUpdateFieldsToFill");
 		txtUpdateFieldsToFill = new TextField();
 		hUpdateFields.setAlignment(Pos.CENTER);
 		hUpdateFields.setPadding(new Insets(0, 0, 0, 47));
 		hUpdateFields.setSpacing(10);
 		hUpdateFields.getChildren().addAll(lblUpdateFieldsToFill, txtUpdateFieldsToFill);
 		
-		hUpdateValues = new HBox();
-		lblValuesToUpdate = new Label("Values:");
-		lblValuesToUpdate.setId("lblValuesToUpdate");
-		txtValuesToUpdate = new TextField();
-		hUpdateFields.setAlignment(Pos.CENTER);
-		hUpdateFields.setPadding(new Insets(0, 0, 0, 41));
-		hUpdateFields.setSpacing(10);
-		hUpdateFields.getChildren().addAll(lblValuesToUpdate, txtValuesToUpdate);
+		hUpdateNewValues = new HBox();
+		lblUpdateNewValues = new Label("New Value:");
+		lblUpdateNewValues.setId("lblUpdateFieldsToFill");
+		txtUpdateNewValues = new TextField();
+		hUpdateNewValues.setAlignment(Pos.CENTER);
+		hUpdateNewValues.setPadding(new Insets(0, 0, 0, 2));
+		hUpdateNewValues.setSpacing(10);
+		hUpdateNewValues.getChildren().addAll(lblUpdateNewValues, txtUpdateNewValues);
+		
+		hUpdateCondition = new HBox();
+		lblConditionToUpdate = new Label("Condition:");
+		lblConditionToUpdate.setId("lblValuesToUpdate");
+		txtConditionToUpdate = new TextField();
+		hUpdateCondition.setAlignment(Pos.CENTER);
+		hUpdateCondition.setPadding(new Insets(0, 0, 0, 7));
+		hUpdateCondition.setSpacing(10);
+		hUpdateCondition.getChildren().addAll(lblConditionToUpdate, txtConditionToUpdate);
 		
 		hUpdateExecution = new HBox();
 		btnUpdateExecution = new Button("Execution!");
@@ -278,7 +316,7 @@ public class DBMovements {
 		hUpdateExecution.getChildren().addAll(btnUpdateExecution);
 		
 		vUpdateBox.setAlignment(Pos.CENTER);
-		vUpdateBox.getChildren().addAll(hUpdateTable, hUpdateFields, hUpdateValues, hUpdateExecution);
+		vUpdateBox.getChildren().addAll(hUpdateTable, hUpdateFields, hUpdateNewValues, hUpdateCondition, hUpdateExecution);
 		
 		UpdatePanel.setCenter(vUpdateBox);
 		
@@ -295,7 +333,25 @@ public class DBMovements {
 		try {
 			CallableStatement statement = DBStatus.DBLink.prepareCall("{ CALL sp_Update (?, ?, ?, ?) }");
 			
+			statement.setString(1, txtTableToUpdate.getText());
+			statement.setString(2, txtUpdateFieldsToFill.getText());
+			statement.setString(3, txtUpdateNewValues.getText());
+			statement.setString(4, txtConditionToUpdate.getText());
+			
 			statement.execute();
+			
+			MainWindow.taResult.setText(MainWindow.taResult.getText() + 
+					"Updated Data:\n" + 
+					"Table To Update: " + txtTableToUpdate.getText() + 
+					"\n" +
+					"Fields to Fill: " + txtUpdateFieldsToFill.getText() + 
+					"\n" +
+					"New Value: " + txtUpdateNewValues.getText() + 
+					"\n" +
+					"Condition: " + txtConditionToUpdate.getText() + 
+					"\n\n");
+			
+			UpdateStage.close();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -320,7 +376,7 @@ public class DBMovements {
 		
 		hDeleteFields = new HBox();
 		lblDeleteFieldsToFill = new Label("Fields:");
-		lblDeleteFieldsToFill.setId("lblFieldsToFill");
+		lblDeleteFieldsToFill.setId("lblDeleteFieldsToFill");
 		txtDeleteFieldsToFill = new TextField();
 		hDeleteFields.setAlignment(Pos.CENTER);
 		hDeleteFields.setPadding(new Insets(0, 0, 0, 47));
@@ -331,10 +387,10 @@ public class DBMovements {
 		lblValuesToDelete = new Label("Values:");
 		lblValuesToDelete.setId("lblValuesToDelete");
 		txtValuesToDelete = new TextField();
-		hDeleteFields.setAlignment(Pos.CENTER);
-		hDeleteFields.setPadding(new Insets(0, 0, 0, 41));
-		hDeleteFields.setSpacing(10);
-		hDeleteFields.getChildren().addAll(lblValuesToDelete, txtValuesToDelete);
+		hDeleteValues.setAlignment(Pos.CENTER);
+		hDeleteValues.setPadding(new Insets(0, 0, 0, 41));
+		hDeleteValues.setSpacing(10);
+		hDeleteValues.getChildren().addAll(lblValuesToDelete, txtValuesToDelete);
 		
 		hDeleteExecution = new HBox();
 		btnDeleteExecution = new Button("Execution!");
