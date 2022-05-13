@@ -45,13 +45,13 @@
 /* -------------------------------------------------------------------------------------------------------- */
 	DROP PROCEDURE IF EXISTS sp_Select;
 	DELIMITER $$
-	CREATE PROCEDURE sp_Select (DataToRecover VARCHAR(50), TableToRecover VARCHAR(50), ConditionToApply LONGTEXT)
+	CREATE PROCEDURE sp_Select (DataToRecover VARCHAR(50), TableToRecover VARCHAR(50))
 	BEGIN
         DECLARE SelectQuery LONGTEXT;
         
-        SET @SelectQuery = CONCAT('SELECT ', DataToRecover, ' FROM ', TableToRecover, ' WHERE ', ConditionToApply);
+        SET @SelectQuery = CONCAT('SELECT ', DataToRecover, ' FROM ', TableToRecover);
         
-        PREPARE SelectQueryStatement FROM @InsertQuery;
+        PREPARE SelectQueryStatement FROM @SelectQuery;
         
         EXECUTE SelectQueryStatement;
         
