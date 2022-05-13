@@ -150,6 +150,7 @@ public class DBStatus {
 			MainWindow.lblStatusText.setText("OFF");
 			MainWindow.lblStatusText.setStyle("-fx-text-fill: red;");
 			
+			MainWindow.toolsInsert.setDisable(true);
 			MainWindow.toolsSelect.setDisable(true);
 			MainWindow.toolsUpdate.setDisable(true);
 			MainWindow.toolsDelete.setDisable(true);
