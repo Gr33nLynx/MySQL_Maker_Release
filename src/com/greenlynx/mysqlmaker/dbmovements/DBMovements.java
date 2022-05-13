@@ -92,18 +92,16 @@ public class DBMovements {
 	
 	public static BorderPane DeletePanel;
 	public static Button btnDeleteExecution;
-	public static HBox hDeleteFields;
+	public static HBox hDeleteCondition;
 	public static HBox hDeleteExecution;
 	public static HBox hDeleteTable;
 	public static HBox hDeleteValues;
-	public static Label lblDeleteFieldsToFill;
+	public static Label lblConditionToDelete;
 	public static Label lblTableToDelete;
-	public static Label lblValuesToDelete;
 	public static Scene DeleteScene;
 	public static Stage DeleteStage;
-	public static TextField txtDeleteFieldsToFill;
+	public static TextField txtConditionToDelete;
 	public static TextField txtTableToDelete;
-	public static TextField txtValuesToDelete;
 	public static VBox vDeleteBox;
 	// ==========================
 	
@@ -374,23 +372,14 @@ public class DBMovements {
 		hDeleteTable.setSpacing(10);
 		hDeleteTable.getChildren().addAll(lblTableToDelete, txtTableToDelete);
 		
-		hDeleteFields = new HBox();
-		lblDeleteFieldsToFill = new Label("Fields:");
-		lblDeleteFieldsToFill.setId("lblDeleteFieldsToFill");
-		txtDeleteFieldsToFill = new TextField();
-		hDeleteFields.setAlignment(Pos.CENTER);
-		hDeleteFields.setPadding(new Insets(0, 0, 0, 47));
-		hDeleteFields.setSpacing(10);
-		hDeleteFields.getChildren().addAll(lblDeleteFieldsToFill, txtDeleteFieldsToFill);
-		
-		hDeleteValues = new HBox();
-		lblValuesToDelete = new Label("Values:");
-		lblValuesToDelete.setId("lblValuesToDelete");
-		txtValuesToDelete = new TextField();
-		hDeleteValues.setAlignment(Pos.CENTER);
-		hDeleteValues.setPadding(new Insets(0, 0, 0, 41));
-		hDeleteValues.setSpacing(10);
-		hDeleteValues.getChildren().addAll(lblValuesToDelete, txtValuesToDelete);
+		hDeleteCondition = new HBox();
+		lblConditionToDelete = new Label("Values:");
+		lblConditionToDelete.setId("lblValuesToDelete");
+		txtConditionToDelete = new TextField();
+		hDeleteCondition.setAlignment(Pos.CENTER);
+		hDeleteCondition.setPadding(new Insets(0, 0, 0, 41));
+		hDeleteCondition.setSpacing(10);
+		hDeleteCondition.getChildren().addAll(lblConditionToDelete, txtConditionToDelete);
 		
 		hDeleteExecution = new HBox();
 		btnDeleteExecution = new Button("Execution!");
@@ -400,7 +389,7 @@ public class DBMovements {
 		hDeleteExecution.getChildren().addAll(btnDeleteExecution);
 		
 		vDeleteBox.setAlignment(Pos.CENTER);
-		vDeleteBox.getChildren().addAll(hDeleteTable, hDeleteFields, hDeleteValues, hDeleteExecution);
+		vDeleteBox.getChildren().addAll(hDeleteTable, hDeleteCondition, hDeleteValues, hDeleteExecution);
 		
 		DeletePanel.setCenter(vDeleteBox);
 		
@@ -417,7 +406,19 @@ public class DBMovements {
 		try {
 			CallableStatement statement = DBStatus.DBLink.prepareCall("{ CALL sp_Delete (?, ?, ?) }");
 			
+			statement.setString(1, txtTableToDelete.getText());
+			statement.setString(2, txtConditionToDelete.getText());
+			
 			statement.execute();
+			
+			MainWindow.taResult.setText(MainWindow.taResult.getText() + 
+					"Deleted Data:\n" + 
+					"Table To Delete: " + txtTableToDelete.getText() + 
+					"\n" +
+					"Condition: " + txtConditionToDelete.getText() + 
+					"\n\n");
+			
+			DeleteStage.close();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
