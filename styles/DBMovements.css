@@ -17,7 +17,7 @@
 #lblTableToInsert, #lblFieldsToFill, #lblValuesToInsert, 
 #lblTableToSelect, #lblSelectFieldsToFill, #lblValuesToSelect,
 #lblTableToUpdate, #lblUpdateFieldsToFill, #lblValuesToUpdate,
-#lblTableToDelete, #lblDeleteFieldsToFill, #lblValuesToDelete {
+#lblTableToDelete, #lblConditionToDelete {
 	-fx-font-size: 16px;
 	-fx-font-weight: bold;
 }
