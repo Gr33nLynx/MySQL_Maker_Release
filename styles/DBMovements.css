@@ -14,7 +14,10 @@
  * 		©2022 GR33NLYNX
  */
 
-#lblTableToInsert, #lblFieldsToFill, #lblValuesToInsert {
+#lblTableToInsert, #lblFieldsToFill, #lblValuesToInsert, 
+#lblTableToSelect, #lblSelectFieldsToFill, #lblValuesToSelect,
+#lblTableToUpdate, #lblUpdateFieldsToFill, #lblValuesToUpdate,
+#lblTableToDelete, #lblDeleteFieldsToFill, #lblValuesToDelete {
 	-fx-font-size: 16px;
 	-fx-font-weight: bold;
 }
