@@ -373,11 +373,11 @@ public class DBMovements {
 		hDeleteTable.getChildren().addAll(lblTableToDelete, txtTableToDelete);
 		
 		hDeleteCondition = new HBox();
-		lblConditionToDelete = new Label("Values:");
-		lblConditionToDelete.setId("lblValuesToDelete");
+		lblConditionToDelete = new Label("Condition:");
+		lblConditionToDelete.setId("lblConditionToDelete");
 		txtConditionToDelete = new TextField();
 		hDeleteCondition.setAlignment(Pos.CENTER);
-		hDeleteCondition.setPadding(new Insets(0, 0, 0, 41));
+		hDeleteCondition.setPadding(new Insets(0, 0, 0, 15));
 		hDeleteCondition.setSpacing(10);
 		hDeleteCondition.getChildren().addAll(lblConditionToDelete, txtConditionToDelete);
 		
@@ -389,7 +389,7 @@ public class DBMovements {
 		hDeleteExecution.getChildren().addAll(btnDeleteExecution);
 		
 		vDeleteBox.setAlignment(Pos.CENTER);
-		vDeleteBox.getChildren().addAll(hDeleteTable, hDeleteCondition, hDeleteValues, hDeleteExecution);
+		vDeleteBox.getChildren().addAll(hDeleteTable, hDeleteCondition, hDeleteExecution);
 		
 		DeletePanel.setCenter(vDeleteBox);
 		
@@ -404,7 +404,7 @@ public class DBMovements {
 	
 	public static void DeleteQueryAction() {
 		try {
-			CallableStatement statement = DBStatus.DBLink.prepareCall("{ CALL sp_Delete (?, ?, ?) }");
+			CallableStatement statement = DBStatus.DBLink.prepareCall("{ CALL sp_Delete (?, ?) }");
 			
 			statement.setString(1, txtTableToDelete.getText());
 			statement.setString(2, txtConditionToDelete.getText());
