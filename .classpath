@@ -10,8 +10,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Java FX 18"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX 18"/>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry kind="lib" path="X:/Programming Languages/Java/Projects/MySQL_Maker_Debug/ext_libraries/mysql-connector-java-8.0.28.jar"/>
+	<classpathentry kind="lib" path="E:/Programming Languages/Java/Projects/MySQL_Maker_Debug/ext_libraries/mysql-connector-java-8.0.28.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
