@@ -21,6 +21,17 @@
 	USE `MySQLMaker`;
 /* ------------------------------------- */
 
+				-- TABLE --
+/* ------------------------------------- */
+	USE MYSQLMAKER;
+	DROP TABLE IF EXISTS tPrueba;
+	CREATE TABLE tPrueba
+	(
+		ID INT AUTO_INCREMENT PRIMARY KEY,
+		NOMBRE LONGTEXT
+	);
+/* ------------------------------------- */
+
 										-- INSERT STORED PROCEDURE --
 /* ------------------------------------------------------------------------------------------------------ */
 	DROP PROCEDURE IF EXISTS sp_Insert;
