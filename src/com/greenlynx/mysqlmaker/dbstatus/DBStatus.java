@@ -118,7 +118,7 @@ public class DBStatus {
 				MainWindow.toolsDelete.setDisable(false);
 				
 				MainWindow.taResult.setVisible(true);
-				MainWindow.taResult.setText("Query Results Here:\n");
+				MainWindow.taResult.setText("Query Results Here:\n\n");
 				
 				//MainWindow.toolsProcedure.setDisable(false);
 				//MainWindow.toolsFunction.setDisable(false);
@@ -153,6 +153,9 @@ public class DBStatus {
 			MainWindow.toolsSelect.setDisable(true);
 			MainWindow.toolsUpdate.setDisable(true);
 			MainWindow.toolsDelete.setDisable(true);
+			
+			MainWindow.taResult.setVisible(false);
+			MainWindow.taResult.setText("");
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
